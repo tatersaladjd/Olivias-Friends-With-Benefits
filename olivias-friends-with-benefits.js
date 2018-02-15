@@ -1,9 +1,9 @@
 // Declare prefixes Object (user->text).
-var prefixes = new Object();
+var prefixes = {};
 // Declare claims Object (user->nickname).
-var claims = new Object();
+var claims = {};
 // Declare tippers Object (user->total_amount).
-var tippers = new Object();
+var tippers = {};
 // CSS colors.
 // Specific user variables that will be used for cb.settings.
 var specific_users = [
@@ -33,7 +33,7 @@ var silenced = false;
 // Rotating Notifier vars
 var i = 0;
 var triggered;
-var MAXITEMS = 10;
+var MAX_ITEMS = 10;
 // tipMenu Vars
 var lastTipper = "--";
 var lastTipAmount = 0;
@@ -1097,20 +1097,20 @@ for (i = 0; i < specific_users.length; i++) {
 
 // Send welcome message.
 cb.onEnter(function(user) {
-  if (cb.settings["msgonentry"] == "yes") {
-    var notices = "Hi " + user["user"] + "! ";
+  if (cb.settings.msgonentry == "yes") {
+    var notices = "Hi " + user.user + "! ";
     cb.sendNotice(
       notices,
-      user["user"],
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      user.user,
+      cb.settings.notice_background_color,
+      cb.settings.notice_color,
       "bold"
     );
     cb.sendNotice(
-      cb.settings["entryMSG"],
-      user["user"],
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      cb.settings.entryMSG,
+      user.user,
+      cb.settings.notice_background_color,
+      cb.settings.notice_color,
       "bold"
     );
   }
@@ -1126,18 +1126,18 @@ function chatAd() {
   while (cb.settings["msg" + (i + 1)] == 0) {
     //skip empty messages
     i++;
-    i %= MAXITEMS;
+    i %= MAX_ITEMS;
   }
 
   msg = cb.settings["msg" + (i + 1)];
   i++;
-  i %= MAXITEMS;
+  i %= MAX_ITEMS;
 
   cb.sendNotice(
     msg,
     "",
-    cb.settings["notice_background_color"],
-    cb.settings["notice_color"],
+    cb.settings.notice_background_color,
+    cb.settings.notice_color,
     "bold"
   );
   cb.setTimeout(chatAd, cb.settings.chat_ad * 60000);
@@ -1146,9 +1146,9 @@ cb.setTimeout(chatAd, cb.settings.chat_ad * 60000);
 
 // Act upon chat messages.
 cb.onMessage(function(msg) {
-  var message = msg["m"].split(" "); // Explode message to an array.
-  var user = msg["user"];
-  var has_access = user == cb.room_slug || msg["is_mod"];
+  var message = msg.m.split(" "); // Explode message to an array.
+  var user = msg.user;
+  var has_access = user == cb.room_slug || msg.is_mod;
   var commands = [
     "/prefix",
     "/no_prefix",
@@ -1165,7 +1165,7 @@ cb.onMessage(function(msg) {
   if (cbjs.arrayContains(commands, message[0])) {
     msg["X-Spam"] = true; // Hide command from chat by marking it as spam.
     var command = message[0];
-    var errorMessages = new Array(); // Do some checks.
+    var errorMessages = []; // Do some checks.
     if (!has_access) {
       errorMessages.push("you are not allowed to execute this command.");
     }
@@ -1185,20 +1185,17 @@ cb.onMessage(function(msg) {
           removePrefix(user, target_user);
           break;
         case commands[2]:
-          claim(user, msg["gender"], target_user, text);
+          claim(user, msg.gender, target_user, text);
           break;
         case commands[3]:
           removeClaim(user, target_user);
           break;
         case commands[4]:
           cb.sendNotice(
-            msg["m"]
-              .split(" ")
-              .slice(1)
-              .join(" "),
+            msg.m.split(" ").slice(1).join(" "),
             "",
-            cb.settings["notice_background_color"],
-            cb.settings["notice_color"],
+            cb.settings.notice_background_color,
+            cb.settings.notice_color,
             "bold"
           );
           break;
@@ -1207,8 +1204,8 @@ cb.onMessage(function(msg) {
           cb.sendNotice(
             cb.room_slug + " has been silenced!",
             "",
-            cb.settings["notice_background_color"],
-            cb.settings["notice_color"],
+            cb.settings.notice_background_color,
+            cb.settings.notice_color,
             "bold"
           );
           break;
@@ -1217,8 +1214,8 @@ cb.onMessage(function(msg) {
           cb.sendNotice(
             cb.room_slug + " has been released from the silence!",
             "",
-            cb.settings["notice_background_color"],
-            cb.settings["notice_color"],
+            cb.settings.notice_background_color,
+            cb.settings.notice_color,
             "bold"
           );
           break;
@@ -1227,7 +1224,7 @@ cb.onMessage(function(msg) {
             "[" +
             user +
             "] " +
-            msg["m"]
+            msg.m
               .split(" ")
               .slice(1)
               .join(" ");
@@ -1242,24 +1239,25 @@ cb.onMessage(function(msg) {
       //Errors found, display them to the user!
       cb.sendNotice(errorMessages.join("\n"), user);
     }
-  } else if (msg["m"].match(/\/menuoff/i)) {
-    var is_mod = cb.room_slug == msg["user"] || msg["is_mod"];
+  } else if (msg.m.match(/\/menuoff/i)) {
+    var is_mod = cb.room_slug == msg.user || msg.is_mod;
     msg["X-Spam"] = true;
     if (is_mod) {
-      cb.settings["tipmenu"] = "no";
+      cb.settings.tipmenu = "no";
     }
-  } else if (msg["m"].match(/\/menuon/i)) {
-    var is_mod = cb.room_slug == msg["user"] || msg["is_mod"];
+  } else if (msg.m.match(/\/menuon/i)) {
+    var is_mod = cb.room_slug == msg.user || msg.is_mod;
     msg["X-Spam"] = true;
     if (is_mod) {
-      cb.settings["tipmenu"] = "yes";
+      cb.settings.tipmenu = "yes";
     }
-  } else if (msg["m"].match(/\/menu/i) && cb.settings["tipmenu"] == "yes") {
+  } 
+  else if (msg.m.match(/\/menu/i) && cb.settings.tipmenu == "yes") {
     cb.sendNotice(
       user + " requested the tip menu.",
       cb.room_slug,
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      cb.settings.notice_background_color,
+      cb.settings.notice_colo,
       "bold"
     );
     msg["X-Spam"] = true;
@@ -1270,6 +1268,7 @@ cb.onMessage(function(msg) {
         parseInt(cb.settings["item_" + i + "_price"]) > 0 &&
         cb.settings.get("item_" + i + "_menu") == "yes"
       ) {
+        // WTH is this for? LOL (JD)
         if (parseInt(cb.settings["item_" + i + "_price"]) == 696969) {
           notices += "\n " + cb.settings["item_" + i];
         } else {
@@ -1281,85 +1280,85 @@ cb.onMessage(function(msg) {
         }
       }
     }
-    var is_mod = cb.room_slug == msg["user"] || msg["is_mod"];
+    var is_mod = cb.room_slug == msg.user || msg.is_mod;
     if (!is_mod) {
       cb.sendNotice(
         notices,
-        msg["user"],
-        cb.settings["notice_background_color"],
-        cb.settings["notice_color"],
+        msg.user,
+        cb.settings.notice_background_color,
+        cb.settings.notice_color,
         "bold"
       );
     } else {
       cb.sendNotice(
         notices,
         "",
-        cb.settings["notice_background_color"],
-        cb.settings["notice_color"],
+        cb.settings.notice_background_color,
+        cb.settings.notice_color,
         "bold"
       );
     }
-  } else if (msg["m"].match(/\/menu/i) && cb.settings["tipmenu"] == "no") {
+  } else if (msg.m.match(/\/menu/i) && cb.settings.tipmenu == "no") {
     cb.sendNotice(
       user + " tried to request the tip menu.",
       cb.room_slug,
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      cb.settings.notice_background_color,
+      cb.settings.notice_color,
       "bold"
     );
     msg["X-Spam"] = true;
     cb.sendNotice(
       "I'm sorry, the tip menu is currently disabled.",
-      msg["user"],
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      msg.user,
+      cb.settings.notice_background_color,
+      cb.settings.notice_color,
       "bold"
     );
-  } else if (msg["m"].match(/\/fwb/i)) {
+  } else if (msg.m.match(/\/fwb/i)) {
     var present = 0;
-    var userArray = cb.settings["fwb_list"].split(" ");
+    var userArray = cb.settings.fwb_list.split(" ");
     for (var j = 0; j < userArray.length; j++) {
-      if (userArray[j] == msg["user"]) {
+      if (userArray[j] == msg.user) {
         present = 1;
       }
     }
     if (present == 1) {
-      var FWBmessage = cb.settings["fwb_msg"].split("\\n"); // Explode message to an array.
+      var FWBmessage = cb.settings.fwb_msg.split("\\n"); // Explode message to an array.
       var FWBmsg = FWBmessage.join("\n");
       cb.sendNotice(
         FWBmsg,
-        msg["user"],
-        cb.settings["notice_background_color"],
-        cb.settings["notice_color"],
+        msg.user,
+        cb.settings.notice_background_color,
+        cb.settings.notice_color,
         "bold"
       );
       cb.sendNotice(
         user + " used the fwb command.",
         cb.room_slug,
-        cb.settings["notice_background_color"],
-        cb.settings["notice_color"],
+        cb.settings.notice_background_color,
+        cb.settings.notice_color,
         "bold"
       );
     } else {
       cb.sendNotice(
         "You do not have permission to use this command.",
-        msg["user"],
-        cb.settings["notice_background_color"],
-        cb.settings["notice_color"],
+        msg.user,
+        cb.settings.notice_background_color,
+        cb.settings.notice_color,
         "bold"
       );
       cb.sendNotice(
         user + " tried to use the fwb command but was denied.",
         cb.room_slug,
-        cb.settings["notice_background_color"],
-        cb.settings["notice_color"],
+        cb.settings.notice_background_color,
+        cb.settings.notice_color,
         "bold"
       );
     }
     msg["X-Spam"] = true;
   } else {
     // No command.
-    if (msg["m"][0] != "/") {
+    if (msg.m[0] != "/") {
       alterNormalMessage(msg); // Alter the message with prefix and/or claim.
       invokeSettingsCheck(msg); // Check if the extra settings for broadcaster/fan/mod need to be invoked.
       checkIfSilenced(msg);
@@ -1389,25 +1388,26 @@ function getItemActive(tokens) {
 
 // Act upon tips.
 cb.onTip(function(tip) {
-  var user = tip["from_user"];
-  var amount = parseInt(tip["amount"]);
+  var user = tip.from_user;
+  var amount = parseInt(tip.amount);
   if (user in tippers) {
     tippers[user] += amount;
   } else {
     tippers[user] = amount;
   }
   //new stuff by SIMON
-  tipCounter += parseInt(tip["amount"]);
-  lastTipAmount = parseInt(tip["amount"]);
-  lastTipper = tip["from_user"];
+  // fix by JD. Don't re-parse the int every time. It's already been done above!
+  tipCounter += parseInt(amount);
+  lastTipAmount = parseInt(amount);
+  lastTipper = user;
   lastItem = getItem(tip["amount"]);
   itemActive = getItemActive(tip["amount"]);
   if (lastItem && cb.settings["tipmenu"] == "yes" && itemActive == "yes") {
     cb.sendNotice(
       tip["from_user"] + " :heart2 says: " + getItem(tip["amount"]),
       "",
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      cb.settings.notice_background_color,
+      cb.settings.notice_color,
       "bold"
     );
   }
@@ -1437,16 +1437,16 @@ function removePrefix(user, target_user) {
     cb.sendNotice(
       target_user + "'s messages will no longer be prefixed.",
       user,
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      cb.settings.notice_background_color,
+      cb.settings.notice_color,
       "bold"
     );
   } else {
     cb.sendNotice(
       "no prefix for " + target_user + " found to remove.",
       user,
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      cb.settings.notice_background_color,
+      cb.settings.notice_color,
       "bold"
     );
   }
@@ -1458,19 +1458,19 @@ function claim(user, gender, target_user, text) {
     text = "pet"; // Default value.
   }
   claims[target_user] = "[" + user + "'s " + text + "]";
-  var possesive = getPossesive(gender);
+  var possessive = getPossessive(gender);
   cb.sendNotice(
     user +
       " has claimed " +
       target_user +
       " as " +
-      possesive +
+      possessive +
       " " +
       text +
       "!",
     "",
-    cb.settings["notice_background_color"],
-    cb.settings["notice_color"],
+    cb.settings.notice_background_color,
+    cb.settings.notice_color,
     "bold"
   );
 }
@@ -1482,16 +1482,16 @@ function removeClaim(user, target_user) {
     cb.sendNotice(
       user + " has freed " + target_user + "!",
       "",
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      cb.settings.notice_background_color,
+      cb.settings.notice_color,
       "bold"
     );
   } else {
     cb.sendNotice(
       target_user + " hasn't been claimed yet, you can't free this user.",
       user,
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      cb.settings.notice_background_color,
+      cb.settings.notice_color,
       "bold"
     );
   }
@@ -1499,28 +1499,27 @@ function removeClaim(user, target_user) {
 
 // Alter message with prefix and/or claim.
 function alterNormalMessage(msg) {
-  var user = msg["user"];
+  var user = msg.user;
   // Prefix text of current user if applicable.
   if (user in prefixes) {
-    msg["m"] = prefixes[user] + " " + msg["m"];
+    msg.m = prefixes[user] + " " + msg.m;
   }
   // Claim user if applicable.
   if (user in claims) {
-    msg["m"] = claims[user] + " " + msg["m"];
+    msg.m = claims[user] + " " + msg.m;
   }
 }
 
 // Check if the extra settings for broadcaster/fan/mod need to be invoked.
 function invokeSettingsCheck(msg) {
-  var mods;
-  cb.settings["mods"];
-  if (msg["user"] == cb.room_slug) {
+  var mods = cb.settings.mods;
+  if (msg.user == cb.room_slug) {
     // Broadcaster.
     invokeSettings(msg, "model");
-  } else if (cbjs.arrayContains(mod_users, msg["user"])) {
+  } else if (cbjs.arrayContains(mod_users, msg.user)) {
     // Mod.
     invokeSettings(msg, "mod");
-  } else if (cbjs.arrayContains(fan_users, msg["user"])) {
+  } else if (cbjs.arrayContains(fan_users, msg.user)) {
     // Fan.
     invokeSettings(msg, "fan");
   }
@@ -1529,24 +1528,24 @@ function invokeSettingsCheck(msg) {
 // Invoke bot settings to the message.
 function invokeSettings(msg, setting) {
   if (cb.settings[setting + "_text"] !== undefined) {
-    msg["m"] = cb.settings[setting + "_text"] + " " + msg["m"];
+    msg.m = cb.settings[setting + "_text"] + " " + msg.m;
   }
   if (setting != "fan") {
     // Fans don't have color options.
-    msg["c"] = cb.settings[setting + "_color"];
+    msg.c = cb.settings[setting + "_color"];
   }
-  msg["background"] = cb.settings[setting + "_background"];
+  msg.background = cb.settings[setting + "_background"];
 }
 
 // Check if broadcaster is silenced.
 function checkIfSilenced(msg) {
-  if (msg["user"] == cb.room_slug && silenced) {
+  if (msg.user == cb.room_slug && silenced) {
     msg["X-Spam"] = true;
     cb.sendNotice(
       "you have been silenced by your little devils! Other users will no longer see your messages.",
-      msg["user"],
-      cb.settings["notice_background_color"],
-      cb.settings["notice_color"],
+      msg.user,
+      cb.settings.notice_background_color,
+      cb.settings.notice_color,
       "bold"
     );
   }
@@ -1581,23 +1580,23 @@ function getTipperList() {
   cb.sendNotice(output2, "", "", "", "", "red");
 }
 
-// Helper function to get possesive pronoun.
-function getPossesive(gender) {
-  var possesive;
+// Helper function to get possessive pronoun.
+function getPossessive(gender) {
+  var possessive;
   switch (gender) {
     case "m":
-      possesive = "his";
+      possessive = "his";
       break;
     case "f":
-      possesive = "her";
+      possessive = "her";
       break;
     case "s":
-      possesive = "its";
+      possessive = "its";
       break;
     case "c":
-      possesive = "their";
+      possessive = "their";
       break;
   }
 
-  return possesive;
+  return possessive;
 }
