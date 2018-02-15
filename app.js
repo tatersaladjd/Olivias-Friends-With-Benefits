@@ -46,13 +46,13 @@ var commands = {
   "/prefix": {
     requires_mod: true,
     action: function(invoking_user, target_user_name, text) {
-      addPrefix(invoking_user, target_user_name, text);
+      cmd_add_prefix(invoking_user, target_user_name, text);
     }
   },
   "/no_prefix": {
     requires_mod: true,
     action: function(invoking_user, target_user_name, text) {
-      removePrefix(invoking_user, target_user_name);
+      cmd_remove_prefix(invoking_user, target_user_name);
     }
   },
   "/claim": {
@@ -86,13 +86,13 @@ var commands = {
   "/menu": {
     requires_mod: false,
     action: function(invoking_user, target_user_name, text) {
-      showMenu();
+      cmd_toggle_menu();
     }
   }
 };
 var menu_on = true;
 
-function showMenu() {
+function cmd_toggle_menu() {
   if (menu_on) {
     console.log("the menu is on.");
   } else {
@@ -100,14 +100,14 @@ function showMenu() {
   }
 }
 
-function addPrefix(user, target_user, text) {
+function cmd_add_prefix(user, target_user, text) {
   console.log(`called addPrefix('${user}','${target_user}','${text}')`);
 }
-function removePrefix(target_user, text) {
+function cmd_remove_prefix(target_user, text) {
   console.log(`called removePrefix('${target_user}','${text}')`);
 }
 
-function executeCommand(messageText, invoking_user) {
+function execute_command(messageText, invoking_user) {
   var is_mod = invoking_user.is_mod;
   var parts = messageText.split(" ");
   var cmdText = parts[0];
@@ -131,9 +131,9 @@ function executeCommand(messageText, invoking_user) {
   }
 }
 
-executeCommand("/menu", { is_mod: false });
+execute_command("/menu", { is_mod: false });
 menu_on = false;
-executeCommand("/menu", { is_mod: false });
-executeCommand("/prefix user1 llama", { is_mod: true });
-executeCommand("/prefix user2 XX", { is_mod: false });
-executeCommand("/no_prefix user1", { is_mod: true });
+execute_command("/menu", { is_mod: false });
+execute_command("/prefix user1 llama", { is_mod: true });
+execute_command("/prefix user2 XX", { is_mod: false });
+execute_command("/no_prefix user1", { is_mod: true });
