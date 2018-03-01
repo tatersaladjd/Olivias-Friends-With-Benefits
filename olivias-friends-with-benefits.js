@@ -346,6 +346,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #1 in tip menu when /menu is typed."
   },
@@ -366,6 +367,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #2 in tip menu when /menu is typed."
   },
@@ -386,6 +388,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #3 in tip menu when /menu is typed."
   },
@@ -406,6 +409,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #4 in tip menu when /menu is typed."
   },
@@ -426,6 +430,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #5 in tip menu when /menu is typed."
   },
@@ -447,6 +452,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #6 in tip menu when /menu is typed."
   },
@@ -468,6 +474,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #7 in tip menu when /menu is typed."
   },
@@ -489,6 +496,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #8 in tip menu when /menu is typed."
   },
@@ -510,6 +518,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #9 in tip menu when /menu is typed."
   },
@@ -531,6 +540,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #10 in tip menu when /menu is typed."
   },
@@ -552,6 +562,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #11 in tip menu when /menu is typed."
   },
@@ -573,6 +584,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #12 in tip menu when /menu is typed."
   },
@@ -594,6 +606,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #13 in tip menu when /menu is typed."
   },
@@ -615,6 +628,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #14 in tip menu when /menu is typed."
   },
@@ -636,6 +650,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #15 in tip menu when /menu is typed."
   },
@@ -657,6 +672,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #16 in tip menu when /menu is typed."
   },
@@ -678,6 +694,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #17 in tip menu when /menu is typed."
   },
@@ -699,6 +716,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #18 in tip menu when /menu is typed."
   },
@@ -720,6 +738,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #19 in tip menu when /menu is typed."
   },
@@ -741,6 +760,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #20 in tip menu when /menu is typed."
   },
@@ -762,6 +782,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #21 in tip menu when /menu is typed."
   },
@@ -783,6 +804,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #22 in tip menu when /menu is typed."
   },
@@ -804,6 +826,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #23 in tip menu when /menu is typed."
   },
@@ -825,6 +848,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #24 in tip menu when /menu is typed."
   },
@@ -846,6 +870,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #25 in tip menu when /menu is typed."
   },
@@ -867,6 +892,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #26 in tip menu when /menu is typed."
   },
@@ -888,6 +914,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #27 in tip menu when /menu is typed."
   },
@@ -909,6 +936,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #28 in tip menu when /menu is typed."
   },
@@ -930,6 +958,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #29 in tip menu when /menu is typed."
   },
@@ -951,6 +980,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #30 in tip menu when /menu is typed."
   },
@@ -972,6 +1002,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #31 in tip menu when /menu is typed."
   },
@@ -993,6 +1024,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #32 in tip menu when /menu is typed."
   },
@@ -1014,6 +1046,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #33 in tip menu when /menu is typed."
   },
@@ -1035,6 +1068,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #34 in tip menu when /menu is typed."
   },
@@ -1056,6 +1090,7 @@ cb.settings_choices = [
     type: "choice",
     choice1: "yes",
     choice2: "no",
+    choice3: "hidden",
     defaultValue: "yes",
     label: "Display #35 in tip menu when /menu is typed."
   },
@@ -1070,6 +1105,12 @@ cb.settings_choices = [
     type: "str",
     label: "List of people who can use /fwb",
     defaultValue: ""
+  },
+  {
+    name: "fwb_entry_msg",
+    type: "str",
+    label: "Entry message to people who can use /fwb",
+    defaultValue: ""
   }
 ];
 // Fill mods and fans arrays.
@@ -1082,8 +1123,8 @@ if (cb.settings.fan_users !== undefined) {
   fan_users = cb.settings.fan_users.split(" ");
 }
 // Add the specific user defaults to the prefixes object.
-for (i = 0; i < specific_users.length; i++) {
-  var element = specific_users[i];
+for (var o = 0; o < specific_users.length; o++) {
+  var element = specific_users[o];
   if (cb.settings[element] !== undefined) {
     var input = cb.settings[element].split(" "); // Explode input to an array.
     if (input.length >= 2) {
@@ -1113,6 +1154,26 @@ cb.onEnter(function(user) {
       cb.settings["notice_color"],
       "bold"
     );
+
+    var present = 0;
+    var userArray = cb.settings["fwb_list"].split(" ");
+    for (var j = 0; j < userArray.length; j++) {
+      if (userArray[j] == user["user"]) {
+        present = 1;
+      }
+    }
+    if(present == 1)
+    {
+      var FWBEntrymessage = cb.settings["fwb_entry_msg"].split("\\n"); // Explode message to an array.
+      var FWBEntrymsg = FWBEntrymessage.join("\n");
+      cb.sendNotice(
+        FWBEntrymsg,
+        user["user"],
+        cb.settings["notice_background_color"],
+        cb.settings["notice_color"],
+        "bold"
+      );
+    }
   }
 });
 
@@ -1264,20 +1325,20 @@ cb.onMessage(function(msg) {
     );
     msg["X-Spam"] = true;
     var notices = " :lovey Say it with a tip :lovey ";
-    for (var i = 1; i <= 100; i++) {
+    for (var k = 1; k <= 100; k++) {
       if (
-        cb.settings.get("item_" + i) &&
-        parseInt(cb.settings["item_" + i + "_price"]) > 0 &&
-        cb.settings.get("item_" + i + "_menu") == "yes"
+        cb.settings.get("item_" + k) &&
+        parseInt(cb.settings["item_" + k + "_price"]) > 0 &&
+        cb.settings.get("item_" + k + "_menu") == "yes"
       ) {
-        if (parseInt(cb.settings["item_" + i + "_price"]) == 696969) {
-          notices += "\n " + cb.settings["item_" + i];
+        if (parseInt(cb.settings["item_" + k + "_price"]) == 696969) {
+          notices += "\n " + cb.settings["item_" + k];
         } else {
           notices +=
             "\n " +
-            cb.settings["item_" + i + "_price"] +
+            cb.settings["item_" + k + "_price"] +
             "tk: " +
-            cb.settings["item_" + i];
+            cb.settings["item_" + k];
         }
       }
     }
@@ -1371,18 +1432,18 @@ cb.onMessage(function(msg) {
 
 // used by tip menu
 function getItem(tokens) {
-  for (var i = 1; i <= 100; i++) {
-    if (parseInt(cb.settings["item_" + i + "_price"]) == parseInt(tokens)) {
-      return cb.settings["item_" + i];
+  for (var l = 1; l <= 100; l++) {
+    if (parseInt(cb.settings["item_" + l + "_price"]) == parseInt(tokens)) {
+      return cb.settings["item_" + l];
     }
   }
 }
 
 // used by tip menu
 function getItemActive(tokens) {
-  for (var i = 1; i <= 100; i++) {
-    if (parseInt(cb.settings["item_" + i + "_price"]) == parseInt(tokens)) {
-      return cb.settings["item_" + i + "_menu"];
+  for (var m = 1; m <= 100; m++) {
+    if (parseInt(cb.settings["item_" + m + "_price"]) == parseInt(tokens)) {
+      return cb.settings["item_" + m + "_menu"];
     }
   }
 }
@@ -1402,7 +1463,7 @@ cb.onTip(function(tip) {
   lastTipper = tip["from_user"];
   lastItem = getItem(tip["amount"]);
   itemActive = getItemActive(tip["amount"]);
-  if (lastItem && cb.settings["tipmenu"] == "yes" && itemActive == "yes") {
+  if (lastItem && cb.settings["tipmenu"] == "yes" && itemActive != "no") {
     cb.sendNotice(
       tip["from_user"] + " :heart2 says: " + getItem(tip["amount"]),
       "",
@@ -1566,8 +1627,8 @@ function getTipperList() {
     var keysSorted = Object.keys(tippers).sort(function(a, b) {
       return tippers[b] - tippers[a];
     });
-    for (i = 0; i < keysSorted.length; i++) {
-      var user = keysSorted[i];
+    for (n = 0; n < keysSorted.length; n++) {
+      var user = keysSorted[n];
       var amount = tippers[user];
       output += "\n" + user + " | " + amount + " tokens";
       output2 += user + " ";
