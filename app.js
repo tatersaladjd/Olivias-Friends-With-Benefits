@@ -137,3 +137,24 @@ execute_command("/menu", { is_mod: false });
 execute_command("/prefix user1 llama", { is_mod: true });
 execute_command("/prefix user2 XX", { is_mod: false });
 execute_command("/no_prefix user1", { is_mod: true });
+
+function build_tip_menu(settings) {
+  var result = {
+    get_item(amount) {
+      if (result[amount] !== undefined) {
+        return result[amount];
+      }
+    }
+  };
+  // TODO: enumerate the settings and find the tip menu items.
+  // for now we'll hard code them.
+  result[8] = "I like potatoes.";
+  result[88] = "I love potatoes.";
+  result[888] = "I am a potato.";
+  return result;
+}
+
+var tip_menu = build_tip_menu({});
+
+console.log(tip_menu.get_item_by_price("8"));
+console.log(tip_menu.get_item_by_price(8));

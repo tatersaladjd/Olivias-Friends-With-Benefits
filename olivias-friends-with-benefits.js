@@ -34,11 +34,13 @@ var silenced = false;
 var i = 0;
 var triggered;
 var MAX_ITEMS = 10;
+
 // tipMenu Vars
 var lastTipper = "--";
 var lastTipAmount = 0;
 var tipCounter = 0;
 var lastItem = "--";
+
 // Bot settings.
 cb.settings_choices = [
   {
@@ -1072,6 +1074,7 @@ cb.settings_choices = [
     defaultValue: ""
   }
 ];
+
 // Fill mods and fans arrays.
 var mod_users = [];
 var fan_users = [];
@@ -1390,21 +1393,23 @@ function getItemActive(tokens) {
 cb.onTip(function(tip) {
   var user = tip.from_user;
   var amount = parseInt(tip.amount);
+  lastTipAmount = amount;
+  lastTipper = user;
+  tipCounter += amount;
+  
   if (user in tippers) {
     tippers[user] += amount;
   } else {
     tippers[user] = amount;
   }
+
   //new stuff by SIMON
   // fix by JD. Don't re-parse the int every time. It's already been done above!
-  tipCounter += parseInt(amount);
-  lastTipAmount = parseInt(amount);
-  lastTipper = user;
-  lastItem = getItem(tip["amount"]);
-  itemActive = getItemActive(tip["amount"]);
-  if (lastItem && cb.settings["tipmenu"] == "yes" && itemActive == "yes") {
+  lastItem = getItem(tip.amount);
+  itemActive = getItemActive(tip.amount);
+  if (lastItem && cb.settings.tipmenu == "yes" && itemActive == "yes") {
     cb.sendNotice(
-      tip["from_user"] + " :heart2 says: " + getItem(tip["amount"]),
+      tip.from_user + " :heart2 says: " + getItem(tip.amount),
       "",
       cb.settings.notice_background_color,
       cb.settings.notice_color,
